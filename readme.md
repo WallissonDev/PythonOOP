@@ -1,0 +1,1 @@
+Alguns exercicios e teorias sobre Programação Orientada a Objetos em Python, durante meu 

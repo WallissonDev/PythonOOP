@@ -1,6 +1,3 @@
-from SistemaBancário import ContaBancaria
-
-
 class Cliente:
 
     def __init__(self, nome, cpf):
@@ -21,20 +18,9 @@ class Cliente:
         cpf_limpo = ''.join(cpf_str)
         self._cpf = cpf_limpo
 
-class Banco:
-
-    def __init__(self, nome_banco, lista_clientes = None)
-        self.nome_banco = nome_banco
-        self.lista_clientes = []
-
-    def abrir_conta(self, cliente_abrir: Cliente, tipo_conta):
-        if tipo_conta == 1:
-
-
-
 class ContaBancaria:
 
-    def __init__(self, numero, titular: Cliente, saldo=0.0):
+    def __init__(self, numero, titular: Cliente, saldo = 0.0):
         self._numero = numero
         self._titular = titular
         self._saldo = saldo
@@ -65,10 +51,9 @@ class ContaBancaria:
     def saldo(self):
         return f'Saldo Atual -> R$ {self._saldo}'
 
-
 class ContaCorrente(ContaBancaria):
 
-    def __init__(self, numero, titular, saldo, limite_especial=100.0):
+    def __init__(self, numero, titular, saldo, limite_especial = 100.0):
         super().__init__(numero, titular, saldo)
         self._limite_especial = limite_especial
 
@@ -93,12 +78,11 @@ class ContaCorrente(ContaBancaria):
     def limite_total(self):
         return self._saldo + self._limite_especial
 
-
 class ContaPoupanca(ContaBancaria):
 
-    def __init__(self, numero, titular, saldo=0, taxa=0.05):
-        super().__init__(numero, titular, saldo)
-        self._taxa = taxa
+    def __init__(self, numero, titular, saldo = 0, taxa = 0.05):
+            super().__init__(numero, titular, saldo)
+            self._taxa = taxa
 
     @property
     def taxa_rendimento(self):
@@ -116,10 +100,9 @@ class ContaPoupanca(ContaBancaria):
         self._saldo += rendimento
         return rendimento
 
-
 class Banco:
 
-    def __init__(self, nome: Cliente, lista_clientes=None):
+    def __init__(self, nome: Cliente, lista_clientes = None):
         self.nome = nome
         self.tipo_conta = None
         self.lista_clientes = []
