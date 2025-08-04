@@ -1,8 +1,3 @@
-from os import remove
-
-from Demos.RegCreateKeyTransacted import key
-
-
 class Cliente:
 
     def __init__(self, nome, identificador, num_pessoas):
