@@ -17,7 +17,7 @@ class Produto:
         if valor > 0:
             self._preco = valor
         else:
-            print('O produto não pode custar menos que 0')
+            raise ValueError('O produto não pode custar menos que 0')
 
     @property
     def id(self):
@@ -78,7 +78,7 @@ class Catalogo:
     def __init__(self):
         self._lista = []
 
-    def adicionar_produto(self, produto):
+    def adicionar_produto(self, produto: Produto):
         if any(p.id == produto.id for p in self._lista):
             print(f'Produto ID:{produto.id} já está na lista!')
             return False
@@ -91,7 +91,7 @@ class Catalogo:
 
     def buscar_produto(self, criterio, arg):
         for p in self._lista:
-            if criterio == 'id':
+            if criterio.lower() == 'id':
                 if p.id == arg:
                     return print(f'Produto encontrado na posição -> {self._lista.index(p)}')
             if criterio == 'nome':
@@ -101,11 +101,14 @@ class Catalogo:
 
     def remover_produto(self, criterio, arg):
         for p in self._lista:
-            if criterio.lower() == 'id' or criterio.lower() == 'nome':
+            if criterio.lower() == 'nome':
                 if p.nome == arg:
                     return self._lista.remove(p)
-                elif str(p.id) == str(arg):
+            if criterio.lower() == 'id':
+                if p.id == arg:
                     return self._lista.remove(p)
+            elif str(p.id) == str(arg):
+                return self._lista.remove(p)
         return False
 
 um2 = Livro( 1,'Livro das Revelações', 150, 'José', 250)
@@ -119,3 +122,4 @@ cat.buscar_produto('nome', 'Biblia')
 cat.buscar_produto('id', 1)
 cat.remover_produto('id', 2)
 cat.listar_todos()
+print(cat._lista)

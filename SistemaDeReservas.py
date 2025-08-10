@@ -53,10 +53,10 @@ class Restaurante:
         for reservadas in self.lista_amostragem:
             print(reservadas)
 
-cliente1 = Cliente('Matheus',1, 13, 6)
-cliente2 = Cliente('Maria', 2, 13, 6)
-cliente3 = Cliente('Joana', 3, 18, 9)
-cliente4 = Cliente('Diego', 4, 15, 7)
+cliente1 = Cliente('Matheus',1, 13)
+cliente2 = Cliente('Maria', 2, 13)
+cliente3 = Cliente('Joana', 3, 18)
+cliente4 = Cliente('Diego', 4, 15)
 mesa1 = Mesa(1, 6)
 mesa2 = Mesa(2, 6)
 mesa3 = Mesa(3, 12)

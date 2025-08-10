@@ -1,0 +1,35 @@
+import json
+
+armas = {
+        'G3SG1 - Desert Storm': [40001, 80000],
+        'Nova - Sand Dune': [1, 40000],
+        'SCAR-20 - SandStorm ': [89031, 92040],
+        'MP5-SD - Necro Jr.': [86021, 89030],
+        'PP-Bizon - Runic' : [83011,  92784],
+        'Galil AR - Cold Fusion': [92785, 93528],
+        'Five-Seven - Coolant': [80001, 83010],
+        'P90 - Freight':[99811, 99910],
+        'SG 553 - Aloha': [99961, 99510],
+        'Glock-18 - Weasel':[99975, 99934],
+        'Five-Seven - Violent Daimyo': [99981, 99922],
+        'Glock-18 - Water Elemental': [99989, 99984],
+        'M4A1-S - Leaded Glass': [99987, 99986],
+        'AK-47 - Point Disarray': [99993, 99994],
+        'M4A1-S - Hyper Beast': [99995, 99995],
+        'M4A1-S - Cyrex':[99996, 99997],
+        'AWP - Hyper Beast': [99998, 99998],
+        'AK-47 - Aquamarine Revenge': [99999, 100000]
+        }
+
+with open('itemscs.json', 'w', encoding='utf-8') as total:
+    json.dump(armas, total, indent=4, ensure_ascii= True)
+
+with open('itemscs.json', 'r', encoding='utf-8') as arquivo:
+    teste = json.load(arquivo)
+
+from random import randint
+
+menor = min(teste.values())
+maior = max(teste.values())
+print(maior[1])
+print(menor[0])

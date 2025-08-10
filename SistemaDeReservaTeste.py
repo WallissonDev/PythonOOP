@@ -77,17 +77,43 @@ class Restaurante:
         self.lista_reservadas= {} # Dicionário com as mesas ocupadas e por quais clientes
 
     def adicionar_mesa(self, mesa: Mesa):
+        """"
+        adicionar_mesa(self, mesa: Mesa)
+            -> Adiciona uma mesa ao restaurante.
+        :param self: Referente a instância.
+        :param mesa:Mesa: Recebe um objeto da class Mesa, atribuindo um número a mesma.
+            -> Receberá o número da Mesa adicionada, criando um dicionário com a ID dela, colocado no mesa:Mesa
+        """
         self.lista_todas_mesas[mesa.numero] = mesa
 
     def verificar_disponibilidade(self, quantia_pessoas):
+        """"
+        verificar_disponibilidade(self, quantia_pessoas):
+            -> Verifica quais mesas estão disponíveis para o número de pessoas passado como parametro.
+        :param quantia_pessoas: Número de pessoas para a reserva, se passar pelos filtros de disponibilidade, mostra ao terminal ID da mesa.
+            -> Se nenhuma mesa estiver disponível, informa no terminal.
+        """
         disponivel = []
         for key, mesa in self.lista_todas_mesas.items():
             if mesa.disponivel:
                 if mesa.capacidade >= quantia_pessoas:
                     disponivel.append(mesa)
+        if len(disponivel) == 0:
+            print(f'Sem mesas disponíveis para {quantia_pessoas} pessoas.')
+        elif len(disponivel) > 0:
+            print('Mesa Disponivel -> ', end ='')
+            for c in disponivel:
+                print(f'Mesa: ID {c.numero} - ', end = '')
         return disponivel
 
     def reservar(self, numero_reserva, pessoa: Cliente):
+        """
+        reservar(self, numero_reserva, pessoa: Cliente):
+            -> Recebe o número da mesma que quer reservar e atribui ao objeto de Class Cliente.
+        :param numero_reserva: ID da mesa que deseja reservar, deve checar as disponíveis antes.
+        :param pessoa: Recebe objeto da Class Cliente, atribuindo ele ao ID da mesa que quer reservar.
+        :return: Se tiver como reservar, return True.
+        """
         for keys, mesa in self.lista_todas_mesas.items():
             if keys == numero_reserva:
                 if mesa.disponivel:
@@ -99,6 +125,11 @@ class Restaurante:
 
 
     def cancelar_reserva(self, idmesa):
+        """"
+        cancelar_reserva(self, idmesa):
+            -> Recebe o ID da mesa reservada e cancela, tornando ela disponível novamente.
+        :param idmesa: ID da mesa que deseja cancelar reserva.
+        """
         if idmesa in self.lista_reservadas.keys():
             self.lista_reservadas.pop(idmesa)
             for keys, mesa in self.lista_todas_mesas.items():
@@ -107,6 +138,10 @@ class Restaurante:
                         mesa.disponivel = True
 
     def verificar_reservadas(self):
+        """"
+        verificar_reservadas(self)
+            -> Sem parametro, mostra lista das mesas já reservadas e quem reservou.
+        """
         for mesa_reservada, cliente_reservou in self.lista_reservadas.items():
             print(f'A mesa {mesa_reservada} foi reservada por {cliente_reservou.nome}')
 
@@ -119,5 +154,5 @@ restaurante.adicionar_mesa(mesa1)
 restaurante.adicionar_mesa(mesa2)
 restaurante.reservar(1, cliente1)
 restaurante.cancelar_reserva(2)
-print(restaurante.verificar_disponibilidade(5))
+restaurante.verificar_disponibilidade(5)
 

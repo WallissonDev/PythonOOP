@@ -13,7 +13,6 @@ class FilaDePrioridade:
     def remover(self): # Comumente Chamamos de Pop
         return heapq.heappop(self.fila)[-1]
 
-
 class Item:
 
     def __init__(self, nome):

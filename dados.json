@@ -1,0 +1,13 @@
+"titulo": 'A Revolução dos Bichos',
+     'autor': 'George Orwell',
+     'ano_publicacao': 1945,
+     'genero': 'Ficção Política',
+     'editora': 'Companhia das Letras'
+     },
+     {
+     'titulo': '1984',
+     'autor': 'George Orwell',
+     'ano_publicacao': 1949,
+     'genero': 'Ficção distópica',
+     'editora': 'Companhia das Letras'
+      }
