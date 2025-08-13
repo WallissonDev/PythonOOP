@@ -7,8 +7,8 @@ with open('itemscs.json', 'r', encoding='utf-8') as armas:
 
 class CSBox:
 
-    def __init__(self, armas):
-        self.dicionario = armas
+    def __init__(self, kit):
+        self.dicionario = kit
         self.inventario = []
 
     def menu(self):
